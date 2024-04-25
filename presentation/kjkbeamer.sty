@@ -1,0 +1,118 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  														
+% 		Kevin Kircher's LaTeX commands for Beamer presentations
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% define this file as a LaTeX style
+\NeedsTeXFormat{LaTeX2e}[1994/06/01]
+\ProvidesPackage{kjkbeamer}
+  [2023/12/30 v1 LaTeX package for my own purpose]
+
+% set presentation mode
+\mode<presentation>
+
+% use a simple black-and-white theme
+\usetheme{default}
+\usecolortheme{dove}
+
+% remove spammy navigation symbols
+\setbeamertemplate{navigation symbols}{}
+
+% add page numbers in the lower right corner; change color/size
+\setbeamertemplate{footline}[frame number]
+\setbeamercolor{page number in head/foot}{fg=teal}
+\setbeamerfont{page number in head/foot}{size=\large}
+
+% center-align slide titles
+\setbeamertemplate{frametitle}[default][center]
+
+% change color of all slide titles
+\setbeamercolor{frametitle}{bg=teal,fg=white}
+
+% add serifs to all text
+%\usefonttheme{serif}
+
+% add folder to graphics path
+\graphicspath{ {./Graphics/}{../Graphics/}{../../Graphics/}}					
+
+% nonstandard packages
+\usepackage{amsmath} % for math symbols
+\usepackage{circuitikz} % for drawings and circuits (includes tikz too)
+\usepackage{wasysym} % for cents sign
+\usetikzlibrary{decorations.pathmorphing} % for squiggles and zigzags
+\tikzset{snaky/.style={decorate,decoration={snake,amplitude=0.7mm,segment length=3mm,post length=2mm}}} % squiggly line shortcut
+\usetikzlibrary{hobby} % for blobs
+\tikzset{>=latex} % redefine default arrow
+\usetikzlibrary{decorations.pathreplacing} % for curly braces
+\usepackage{pgf-pie} % for pie charts
+\usepackage{appendixnumberbeamer} % to reset slide numbers at appendix start
+\usepackage[]{hyperref} % for intra-doc links
+\usepackage{pgfplots} % for 3d graphs and other plots
+
+%---- hyperref options ----%
+\hypersetup{
+	linktocpage = true, % make the page number be the link in ToC
+	colorlinks = true, % color links
+	citecolor = teal, % color citations
+	linkcolor = teal, % link color link
+	urlcolor = teal % URL color
+}
+
+% change itemize symbols
+\setbeamertemplate{itemize item}{$\bullet$}
+\setbeamertemplate{itemize subitem}{$\diamond$}
+
+% remove footnote labels
+\newcommand\emptyfootnote[1]{%
+	\begingroup
+	\renewcommand\thefootnote{}\footnote{\hskip -1.7em #1}%
+	\addtocounter{footnote}{-1}%
+	\endgroup
+}
+
+% add outline at beginning of each section
+\AtBeginSection[]{
+	\begin{frame}<beamer>[noframenumbering, plain]{}
+	\frametitle{Outline}
+	\tableofcontents[currentsection]
+	\end{frame}
+}
+
+% command definitions
+\newcommand{\beq}{\begin{equation}}
+\newcommand{\eeq}{\end{equation}}
+\newcommand{\bit}{\begin{itemize}}
+\newcommand{\eit}{\end{itemize}}
+\newcommand{\ben}{\begin{enumerate}}
+\newcommand{\een}{\end{enumerate}}
+\DeclareMathOperator*{\minimize}{minimize}
+\DeclareMathOperator*{\maximize}{maximize}
+\newcommand{\Expect}{\mathop{{\bf E{}}}}
+\newcommand{\Prob}{\mathop{\bf P{}}}
+\newcommand{\R}{\mathbf{R}}
+\newcommand{\risk}{\mathcal R}
+\newcommand{\simm}{\raise.17ex\hbox{$\scriptstyle\sim$}}
+\newcommand{\defeq}{\mathrel{:\mkern-0.25mu=}}
+\newcommand{\eqdef}{\mathrel{=\mkern-0.25mu:}}
+\newcommand{\setof}[1]{\left \{ #1 \right \}}
+\newcommand{\seqof}[1]{\left ( #1 \right )}
+\newcommand{\midbar}{\ \middle | \ }
+\renewcommand{\det}{\mathop{{\bf det}}} % determinant
+\newcommand{\bmat}{\begin{bmatrix}}
+\newcommand{\emat}{\end{bmatrix}}
+\newcommand{\ones}{\mathbf{1}}
+\newcommand{\dom}{\mathop{{\bf dom}}} % domain
+\newcommand{\epi}{\mathop{{\bf epi}}} % epigraph
+\newcommand{\norm}[1]{\left\|#1\right\|} % norm
+\newcommand{\grad}{{\nabla}} % gradient
+\newcommand{\rank}{\mathop{{\bf rank}}} % rank
+\newcommand{\abs}[1]{\left \lvert #1 \right \rvert} % absolute value		
+
+% numbered equations
+\newcommand{\bneq}{\begin{equation}}
+\newcommand{\eneq}{\end{equation}}
+
+
+
+
