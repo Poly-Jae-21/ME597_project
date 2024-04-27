@@ -4,7 +4,7 @@ import random
 import csv
 from datetime import datetime, timezone
 
-solar_df = pd.read_csv('./DEM-main/Rl-agents/Data/select_data.csv')
+solar_df = pd.read_csv('./MAET/Rl-agents/Data/select_data.csv')
 solar_generation = np.array(solar_df["Pmpp FranceWatts panel (Wh)"], dtype=np.float32)
 
 dates = solar_df["Date and time (UTC)"]
@@ -60,7 +60,7 @@ for i in range(len(hour)):
 
 solar_df["Consum_class"] = classified_day_2
 
-solar_df.to_csv('DEM-main/Rl-agents/Data/select_data_v2.csv')
+solar_df.to_csv('MAET/Rl-agents/Data/select_data_v2.csv')
 print("done")
 
 
